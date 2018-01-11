@@ -1,5 +1,4 @@
 import re
-
 import jieba
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -21,3 +20,7 @@ def calculate_accuracy(request):
     res = CEA.application(CEA.transfer_text_to_moto(list(pos_list)))
 
     return HttpResponse(res)
+
+
+def dict_result(request):
+    pass
