@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Emotion_Manager.views import index, calculate_accuracy, dict_result
+from Emotion_Manager.views import index, calculate_accuracy, dict_result, redirect_to_index
 
 urlpatterns = [
+    path('', redirect_to_index),
     path('admin/', admin.site.urls),
     path('index/', index, name='index'),
     path('calculate/', calculate_accuracy, name='calculate'),

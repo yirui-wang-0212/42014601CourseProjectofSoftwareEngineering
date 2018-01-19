@@ -1,0 +1,26 @@
+{'n': '说', 'k': 'v', 's': -1, 'p': 'neg'}
+
+本来想让酒店再来打扫一下 [[1]] [{'n': '本来', 'k': 't', 's': None, 'p': None}, {'n': '想', 'k': 'v', 's': 1, 'p': 'pos'}, {'n': '让', 'k': 'v', 's': 0, 'p': None}, {'n': '酒店', 'k': 'n', 's': None, 'p': None}, {'n': '再', 'k': 'd', 's': 0, 'p': None}, {'n': '来', 'k': 'v', 's': 0, 'p': None}, {'n': '打扫', 'k': 'v', 's': 0, 'p': None}, {'n': '一下', 'k': 'm', 's': None, 'p': None}]
+
+采光不好 [{'n': '采光', 'k': 'v', 's': None, 'p': None}, {'n': '好不', 'k': 'no', 's': None, 'p': None}]
+
+价格特贵 [{'n': '价格', 'k': 'n', 's': None, 'p': None}, {'n': '特贵', 'k': 'a', 's': 0, 'p': None}]
+
+品种少得可怜 [{'n': '品种', 'k': 'n', 's': None, 'p': None}, {'n': '少', 'k': 'a', 's': 0, 'p': None}, {'n': '得', 'k': 'ud', 's': None, 'p': None}, {'n': '可怜', 'k': 'v', 's': None, 'p': None}]
+
+综合来说与四星级差距太大了 [[1.25, 1]] [{'n': '综合', 'k': 'vn', 's': None, 'p': None}, {'n': '来说', 'k': 'u', 's': None, 'p': None}, {'n': '与', 'k': 'p', 's': None, 'p': None}, {'n': '四星级', 'k': 'b', 's': None, 'p': None}, {'n': '差距', 'k': 'n', 's': None, 'p': None}, {'n': '太', 'k': 'd', 's': 1.25, 'p': 'ext'}, {'n': '大', 'k': 'a', 's': 1, 'p': 'pos'}, {'n': '了', 'k': 'ul', 's': None, 'p': None}]
+
+
+
+故意把住客赶走 [{'n': '故意', 'k': 'd', 's': 0, 'p': None}, {'n': '把', 'k': 'p', 's': None, 'p': None}, {'n': '住客', 'k': 'n', 's': None, 'p': None}, {'n': '赶走', 'k': 'v', 's': None, 'p': None}]
+动词没有加入senseword
+
+
+房间不够 [{'n': '房间', 'k': 'n', 's': None, 'p': None}, {'n': '不够', 'k': 'v', 's': None, 'p': None}]
+动词没有加入senseword
+
+酒店已在携程网上有明显公布 [[1]] [{'n': '酒店', 'k': 'n', 's': None, 'p': None}, {'n': '已', 'k': 'd', 's': 0, 'p': None}, {'n': '在', 'k': 'p', 's': None, 'p': None}, {'n': '携程网', 'k': 'nz', 's': None, 'p': None}, {'n': '上', 'k': 'f', 's': None, 'p': None}, {'n': '有', 'k': 'v', 's': None, 'p': None}, {'n': '明显', 'k': 'a', 's': 1, 'p': 'pos'}, {'n': '公布', 'k': 'v', 's': None, 'p': None}]
+
+感觉非常一般 [{'n': '感觉', 'k': 'n', 's': None, 'p': None}, {'n': '非常', 'k': 'd', 's': 2, 'p': 'ext'}, {'n': '一般', 'k': 'a', 's': 0, 'p': None}]
+
+态度十分差劲 [{'n': '态度', 'k': 'n', 's': None, 'p': None}, {'n': '十分', 'k': 'm', 's': None, 'p': None}, {'n': '差劲', 'k': 'n', 's': None, 'p': None}]

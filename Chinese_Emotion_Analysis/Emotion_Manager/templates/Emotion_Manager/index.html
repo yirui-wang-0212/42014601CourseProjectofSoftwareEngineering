@@ -1,291 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>中文情感倾向分析</title>
-		<meta name="keywords" content="">
-		<meta name="description" content="">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <title>中文情感倾向分析</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% load staticfiles %}
-		<link rel="stylesheet" href="{% static  'css/animate.min.css' %}">
-		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
-		<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/default.css' %}">
-        <script src="{% static 'js/jquery.js' %}"></script>
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
-		<script src="{% static 'js/typed.js' %}"></script>
-		<script src="{% static 'js/wow.min.js' %}"></script>
-		<script src="{% static 'js/custom.js' %}"></script>
-        <script src="{% static 'js/underscore-min.js' %}"></script>
-        <script src="{% static 'js/jquery.progress.js' %}"></script>
-	</head>
-	<body id="top">
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static  'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/default.css' %}">
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
+  <script src="{% static 'js/typed.js' %}"></script>
+  <script src="{% static 'js/wow.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script src="{% static 'js/underscore-min.js' %}"></script>
+  <script src="{% static 'js/jquery.progress.js' %}"></script>
+  <style>
+    .dictionary-choose {
+      display: inline-block;
+      width: 90px;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+      height: calc(2.25rem + 2px);
+      padding: .375rem 1.75rem .375rem .75rem;
+      line-height: 1.5;
+      color: #495057;
+      vertical-align: middle;
+      background: #fff;
+      background-size: 8px 10px;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
 
-		<!-- start preloader -->
-		<div class="preloader">
-			<div class="sk-spinner sk-spinner-wave">
-     	 		<div class="sk-rect1"></div>
-       			<div class="sk-rect2"></div>
-       			<div class="sk-rect3"></div>
-      	 		<div class="sk-rect4"></div>
-      			<div class="sk-rect5"></div>
-     		</div>
-    	</div>
-    	<!-- end preloader -->
+    .result {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    	<!-- start navigation -->
-		<nav class="navbar navbar-default templatemo-nav" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon icon-bar"></span>
-						<span class="icon icon-bar"></span>
-						<span class="icon icon-bar"></span>
-					</button>
-					<a href="#" class="navbar-brand">Lab409</a>
-				</div>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#top">HOME</a></li>
-						<li><a href="#about">ABOUT</a></li>
-						<li><a href="#team">TEAM</a></li>
-						<li><a href="#service">SERVICE</a></li>
-						<li><a href="#portfolio">PORTFOLIO</a></li>
-						<li><a href="#contact">CONTACT</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<!-- end navigation -->
+    .result > button {
+      width: 200px;
+    }
+  </style>
+</head>
+<body id="top">
 
-    	<!-- start home -->
-    	<section id="home" style="background: url({% static 'images/home-bg.jpg' %}) no-repeat; background-size: cover;">
-    		<div class="container">
-    			<div class="row">
-    				<div class="col-md-offset-2 col-md-8">
-    					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s" style="font-weight: 400;">中文情感倾向分析</h1>
-                        <h2 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s"><span style="font-size: 30px; font-weight: 400; color: #FFF;">基于字典方法/机器学习方法</span></h2>
-    					<div class="element">
-                            <div class="sub-element">针对带有主观描述的中文文本，可自动判断该文本的情感极性类别。</div>
-                            <div class="sub-element">情感极性分为积极、消极、中性。</div>
-                            <div class="sub-element">情感倾向分析能帮助企业理解用户消费习惯、分析热点话题和危机舆情监控，为企业提供有力的决策支持。</div>
-                        </div>
-    					<a data-scroll href="#service" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">试一试</a>
-    				</div>
-    			</div>
-    		</div>
-    	</section>
-    	<!-- end home -->
+<!-- start preloader -->
+<div class="preloader">
+  <div class="sk-spinner sk-spinner-wave">
+    <div class="sk-rect1"></div>
+    <div class="sk-rect2"></div>
+    <div class="sk-rect3"></div>
+    <div class="sk-rect4"></div>
+    <div class="sk-rect5"></div>
+  </div>
+</div>
+<!-- end preloader -->
 
-    	<!-- start about -->
-		<section id="about">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">WE ARE <span>AWESOME</span></h2>
-    				</div>
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-heading-wrapper">
-								<div class="media-object pull-left">
-									<i class="fa fa-mobile"></i>
-								</div>
-								<h3 class="media-heading">FULLY RESPONSIVE</h3>
-							</div>
-							<div class="media-body">
-								<p>Awesome responsive template is provided by <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a> website. This is Bootstrap v3.3.2 layout built on HTML5 CSS3. You can use this for any purpose. Please tell your friends about it.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
-						<div class="media">
-							<div class="media-heading-wrapper">
-								<div class="media-object pull-left">
-									<i class="fa fa-comment-o"></i>
-								</div>
-								<h3 class="media-heading">FREE SUPPORT</h3>
-							</div>
-							<div class="media-body">
-								<p>Credits go to <a rel="nofollow" href="http://pixabay.com">Pixabay</a> for homepage image and <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for portfolio images. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-heading-wrapper">
-								<div class="media-object pull-left">
-									<i class="fa fa-html5"></i>
-								</div>
-								<h3 class="media-heading">HTML5 &AMP; CSS3</h3>
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- end about -->
+<!-- start navigation -->
+<nav class="navbar navbar-default templatemo-nav" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Lab409</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#top">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#team">TEAM</a></li>
+        <li><a href="#service">SERVICE</a></li>
+        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- end navigation -->
 
-    	<!-- start team -->
-    	<section id="team">
-    		<div class="container">
-    			<div class="row">
-    				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s" style="font-weight: 400;">中文情感倾向分析</h2>
-    				    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span style="font-size: 30px; font-weight: 300">基于字典方法</span></h2>
-                        <h3 style="font-weight: 100; font-size: 20px">请输入一段中文文本：</h3>
-                    </div>
-    				<div class="col-md-12" class="emotion-input-container">
-                        <textarea class="emotion-input" id="emotion-input-0"></textarea>
-                    </div>
-    			</div>
-    		</d
+<!-- start home -->
+<section id="home" style="background: url({% static 'images/home-bg.jpg' %}) no-repeat; background-size: cover;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s" style="font-weight: 400;">中文情感倾向分析</h1>
+        <h2 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s"><span
+            style="font-size: 30px; font-weight: 400; color: #FFF;">基于字典方法/机器学习方法</span></h2>
+        <div class="element">
+          <div class="sub-element">针对带有主观描述的中文文本，可自动判断该文本的情感极性类别。</div>
+          <div class="sub-element">情感极性分为积极、消极、中性。</div>
+          <div class="sub-element">情感倾向分析能帮助企业理解用户消费习惯、分析热点话题和危机舆情监控，为企业提供有力的决策支持。</div>
+        </div>
+        <a data-scroll href="#service" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">试一试</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end home -->
 
-    	</section>
-    	<!-- end team -->
-
-        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
-
-    	<!-- start service -->
-    	<section id="service">
-    		<div class="container">
-    			<div class="row">
-    				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s" style="font-weight: 400;">中文情感倾向分析</h2>
-    				    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span style="font-size: 30px; font-weight: 300">基于机器学习方法</span></h2>
-                        <h3 style="font-weight: 100; font-size: 20px">请输入一段中文文本：</h3>
-                    </div>
-    				<div class="col-md-12" class="emotion-input-container">
-                        <textarea class="emotion-input" id="emotion-input"></textarea>
-                    </div>
-    			</div>
-    		</div>
-    	</section>
-    	<!-- end servie -->
-
-    	<!-- start portfolio -->
-    	<section id="portfolio">
-    		<div class="container">
-    			<div class="row">
-    				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s" style="font-weight: 300; font-size: 30px">情感分析结果</h2>
-    				</div>
-                    <article class="htmleaf-container col-md-12">
-                        <div class="htmleaf-content">
-                            <div>
-                                <div class="col-md-1">
-                                    <text style="color: #FFF; font-size: 16px">积极情绪</text>
-                                </div>
-                                <div class="col-md-1">
-                                    <img src="{% static 'images/pos.png' %}" style="width: 40px; height: 40px">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <svg id="container"></svg>
-                            </div>
-                            <div>
-                                <div class="col-md-1">
-                                    <img src="{% static 'images/neg.png' %}" style="width: 40px; height: 40px">
-                                </div>
-                                <div class="col-md-1">
-                                    <text style="color: #FFF; font-size: 16px">消极情绪</text>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-    			</div>
-    		</div>
-    	</section>
-    	<!-- end portfolio -->
-
-    	<!-- start contact -->
-    	<section id="contact">
-    		<div class="container">
-    			<div class="row">
-    				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>AWESOME</span></h2>
-    				</div>
-    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
-    					<form action="#" method="post">
-    						<label>NAME</label>
-    						<input name="fullname" type="text" class="form-control" id="fullname">
-
-                            <label>EMAIL</label>
-    						<input name="email" type="email" class="form-control" id="email">
-
-                            <label>MESSAGE</label>
-    						<textarea name="message" rows="4" class="form-control" id="message"></textarea>
-
-                            <input type="submit" class="form-control">
-    					</form>
-    				</div>
-    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
-    					<address>
-    						<p class="address-title">OUR ADDRESS</p>
-    						<span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
-    						<p><i class="fa fa-phone"></i> 010-020-0340</p>
-    						<p><i class="fa fa-envelope-o"></i> awesome@company.com</p>
-    						<p><i class="fa fa-map-marker"></i> 663 New Walk Roadside, Birdeye View, GO 11020</p>
-    					</address>
-    					<ul class="social-icon">
-    						<li><h4>WE ARE SOCIAL</h4></li>
-    						<li><a href="#" class="fa fa-facebook"></a></li>
-    						<li><a href="#" class="fa fa-twitter"></a></li>
-    						<li><a href="#" class="fa fa-instagram"></a></li>
-    					</ul>
-    				</div>
-    			</div>
-    		</div>
-    	</section>
-    	<!-- end contact -->
-
-        <!-- start copyright -->
-        <footer id="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
-                       	Copyright &copy; 2084 Company Name. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-                    </div>
-                </div>
+<!-- start about -->
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">WE ARE <span>AWESOME</span></h2>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
+        <div class="media">
+          <div class="media-heading-wrapper">
+            <div class="media-object pull-left">
+              <i class="fa fa-mobile"></i>
             </div>
-        </footer>
-        <!-- end copyright -->
+            <h3 class="media-heading">FULLY RESPONSIVE</h3>
+          </div>
+          <div class="media-body">
+            <p>Awesome responsive template is provided by <a rel="nofollow" href="http://www.templatemo.com"
+                                                             target="_parent">templatemo</a> website. This is Bootstrap
+              v3.3.2 layout built on HTML5 CSS3. You can use this for any purpose. Please tell your friends about it.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
+        <div class="media">
+          <div class="media-heading-wrapper">
+            <div class="media-object pull-left">
+              <i class="fa fa-comment-o"></i>
+            </div>
+            <h3 class="media-heading">FREE SUPPORT</h3>
+          </div>
+          <div class="media-body">
+            <p>Credits go to <a rel="nofollow" href="http://pixabay.com">Pixabay</a> for homepage image and <a
+                rel="nofollow" href="http://unsplash.com">Unsplash</a> for portfolio images. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+        <div class="media">
+          <div class="media-heading-wrapper">
+            <div class="media-object pull-left">
+              <i class="fa fa-html5"></i>
+            </div>
+            <h3 class="media-heading">HTML5 &AMP; CSS3</h3>
+          </div>
+          <div class="media-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus
+              ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end about -->
 
-        <script>
+<!-- start team -->
+<section id="team">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s" style="font-weight: 400;">中文情感倾向分析</h2>
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span
+            style="font-size: 30px; font-weight: 300">基于字典方法</span></h2>
+        <h3 style="font-weight: 100; font-size: 20px">请输入一段中文文本：</h3>
+        <span>请选择相应字典：</span>
+        <select name="dictionaryType" id="dictionary-type" class="dictionary-choose">
+          <option selected value="1">知网</option>
+          <option value="2">大连理工</option>
+          <option value="3">清华李建军</option>
+          <option value="4">清华情感极值词典</option>
 
-              var progress = $("#container").Progress({
-                  percent: 50,
-                  width: 600,
-                  height: 20,
-                  fontSize: 16,
-                  increaseSpeed: 8
-              });
+        </select>
+      </div>
+      <div class="col-md-12" class="emotion-input-container">
+        <textarea class="emotion-input" id="emotion-input-0"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="result">
+    <button class="btn btn-default" id="dic-result">0.0</button>
+  </div>
+</section>
+<!-- end team -->
 
-            function query() {
-                console.log('Your input', $('#emotion-input').val());
-                $.get('../calculate?query=' + $('#emotion-input').val()).done(function (req) {
-                    if(req == 49.98)
-                        progress.percent(50);
-                    else
-                        progress.percent(req);
-                })
-            }
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">企业网站模板</a></div>
+
+<!-- start service -->
+<section id="service">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s" style="font-weight: 400;">中文情感倾向分析</h2>
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span
+            style="font-size: 30px; font-weight: 300">基于机器学习方法</span></h2>
+        <h3 style="font-weight: 100; font-size: 20px">请输入一段中文文本：</h3>
+      </div>
+      <div class="col-md-12" class="emotion-input-container">
+        <textarea class="emotion-input" id="emotion-input"></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end servie -->
+
+<!-- start portfolio -->
+<section id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s" style="font-weight: 300; font-size: 30px">
+          情感分析结果</h2>
+      </div>
+      <article class="htmleaf-container col-md-12">
+        <div class="htmleaf-content">
+          <div>
+            <div class="col-md-1">
+              <text style="color: #FFF; font-size: 16px">积极情绪</text>
+            </div>
+            <div class="col-md-1">
+              <img src="{% static 'images/pos.png' %}" style="width: 40px; height: 40px">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <svg id="container"></svg>
+          </div>
+          <div>
+            <div class="col-md-1">
+              <img src="{% static 'images/neg.png' %}" style="width: 40px; height: 40px">
+            </div>
+            <div class="col-md-1">
+              <text style="color: #FFF; font-size: 16px">消极情绪</text>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- end portfolio -->
+
+<!-- start contact -->
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>AWESOME</span></h2>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+        <form action="#" method="post">
+          <label>NAME</label>
+          <input name="fullname" type="text" class="form-control" id="fullname">
+
+          <label>EMAIL</label>
+          <input name="email" type="email" class="form-control" id="email">
+
+          <label>MESSAGE</label>
+          <textarea name="message" rows="4" class="form-control" id="message"></textarea>
+
+          <input type="submit" class="form-control">
+        </form>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+        <address>
+          <p class="address-title">OUR ADDRESS</p>
+          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
+          <p><i class="fa fa-phone"></i> 010-020-0340</p>
+          <p><i class="fa fa-envelope-o"></i> awesome@company.com</p>
+          <p><i class="fa fa-map-marker"></i> 663 New Walk Roadside, Birdeye View, GO 11020</p>
+        </address>
+        <ul class="social-icon">
+          <li><h4>WE ARE SOCIAL</h4></li>
+          <li><a href="#" class="fa fa-facebook"></a></li>
+          <li><a href="#" class="fa fa-twitter"></a></li>
+          <li><a href="#" class="fa fa-instagram"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end contact -->
+
+<!-- start copyright -->
+<footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+          Copyright &copy; Lab409</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end copyright -->
+
+<script>
+
+  var progress = $("#container").Progress({
+    percent: 50,
+    width: 600,
+    height: 20,
+    fontSize: 16,
+    increaseSpeed: 8
+  });
+
+  /**
+   * Adjust #dic-result's class
+   */
+  function clearResultDic() {
+    $('#dic-result').removeClass('btn-default');
+    $('#dic-result').removeClass('btn-danger');
+    $('#dic-result').removeClass('btn-success');
+  }
+
+  /**
+   * Query and use method NLP
+   */
+  function queryNLP() {
+    console.log('Your input:', $('#emotion-input').val());
+    $.get('../calculate?type=NLP&query=' + $('#emotion-input').val()).done(function (req) {
+      if (req == 49.98)
+        progress.percent(50);
+      else
+        progress.percent(req);
+    });
+  }
+
+  /**
+   * Query and use method DIC
+   */
+  function queryDIC() {
+    console.log('Your input:', $('#emotion-input-0').val());
+    console.log('Dictionary type:', $('#dictionary-type').val());
+    $.get('../calculate?type=DIC&dic=' + $('#dictionary-type').val() + '&query=' + $('#emotion-input-0').val()).done(function (req) {
+      if (Number.parseFloat(req) > 0){
+        clearResultDic();
+        $('#dic-result').addClass('btn-success');
+        $('#dic-result').text(req);
+      } else if (Number.parseFloat(req) < 0) {
+        clearResultDic();
+        $('#dic-result').addClass('btn-danger');
+        $('#dic-result').text(req);
+      } else {
+        clearResultDic();
+        $('#dic-result').addClass('btn-default');
+        $('#dic-result').text(req);
+      }
+    });
+  }
 
 
-            $(document).ready(function () {
-                $('#emotion-input').keyup(_.debounce(query, 700));
-            })
-        </script>
+  $(document).ready(function () {
+    $('#emotion-input').keyup(_.debounce(queryNLP, 700));
+    $('#emotion-input-0').keyup(_.debounce(queryDIC, 700));
+    $('#dictionary-type').change(queryDIC);
+  })
+</script>
 
-	</body>
+</body>
 </html>
