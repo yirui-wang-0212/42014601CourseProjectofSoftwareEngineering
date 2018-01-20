@@ -82,16 +82,6 @@
       </button>
       <a href="#" class="navbar-brand">Lab409</a>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#top">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#team">TEAM</a></li>
-        <li><a href="#service">SERVICE</a></li>
-        <li><a href="#portfolio">PORTFOLIO</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-    </div>
   </div>
 </nav>
 <!-- end navigation -->
@@ -115,64 +105,6 @@
   </div>
 </section>
 <!-- end home -->
-
-<!-- start about -->
-<section id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">WE ARE <span>AWESOME</span></h2>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
-        <div class="media">
-          <div class="media-heading-wrapper">
-            <div class="media-object pull-left">
-              <i class="fa fa-mobile"></i>
-            </div>
-            <h3 class="media-heading">FULLY RESPONSIVE</h3>
-          </div>
-          <div class="media-body">
-            <p>Awesome responsive template is provided by <a rel="nofollow" href="http://www.templatemo.com"
-                                                             target="_parent">templatemo</a> website. This is Bootstrap
-              v3.3.2 layout built on HTML5 CSS3. You can use this for any purpose. Please tell your friends about it.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
-        <div class="media">
-          <div class="media-heading-wrapper">
-            <div class="media-object pull-left">
-              <i class="fa fa-comment-o"></i>
-            </div>
-            <h3 class="media-heading">FREE SUPPORT</h3>
-          </div>
-          <div class="media-body">
-            <p>Credits go to <a rel="nofollow" href="http://pixabay.com">Pixabay</a> for homepage image and <a
-                rel="nofollow" href="http://unsplash.com">Unsplash</a> for portfolio images. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
-        <div class="media">
-          <div class="media-heading-wrapper">
-            <div class="media-object pull-left">
-              <i class="fa fa-html5"></i>
-            </div>
-            <h3 class="media-heading">HTML5 &AMP; CSS3</h3>
-          </div>
-          <div class="media-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus
-              ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- end about -->
-
 <!-- start team -->
 <section id="team">
   <div class="container">
@@ -186,8 +118,9 @@
         <select name="dictionaryType" id="dictionary-type" class="dictionary-choose">
           <option selected value="1">知网</option>
           <option value="2">大连理工</option>
-          <option value="3">清华李建军</option>
-          <option value="4">清华情感极值词典</option>
+            <option value="3">NTUSD</option>
+          <option value="4">清华李建军</option>
+          <option value="5">清华情感极值词典</option>
 
         </select>
       </div>
@@ -196,13 +129,43 @@
       </div>
     </div>
   </div>
-  <div class="result">
-    <button class="btn btn-default" id="dic-result">0.0</button>
-  </div>
 </section>
 <!-- end team -->
 
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">企业网站模板</a></div>
+   <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"
+                        style="font-weight: 300; font-size: 30px">
+                        情感分析结果</h2>
+                </div>
+                <article class="htmleaf-container col-md-12">
+                    <div class="result">
+                        <button class="btn btn-default" id="dic-result" disabled="disabled">无法识别！</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+   <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"
+                        style="font-weight: 300; font-size: 30px">
+                        反馈</h2>
+                </div>
+                <article class="htmleaf-container col-md-12">
+                    <div class="result">
+                        <button class="btn btn-danger" id="dic-result">分析错误！</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
 
 <!-- start service -->
 <section id="service">
@@ -258,46 +221,22 @@
 </section>
 <!-- end portfolio -->
 
-<!-- start contact -->
-<section id="contact">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>AWESOME</span></h2>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
-        <form action="#" method="post">
-          <label>NAME</label>
-          <input name="fullname" type="text" class="form-control" id="fullname">
-
-          <label>EMAIL</label>
-          <input name="email" type="email" class="form-control" id="email">
-
-          <label>MESSAGE</label>
-          <textarea name="message" rows="4" class="form-control" id="message"></textarea>
-
-          <input type="submit" class="form-control">
-        </form>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
-        <address>
-          <p class="address-title">OUR ADDRESS</p>
-          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
-          <p><i class="fa fa-phone"></i> 010-020-0340</p>
-          <p><i class="fa fa-envelope-o"></i> awesome@company.com</p>
-          <p><i class="fa fa-map-marker"></i> 663 New Walk Roadside, Birdeye View, GO 11020</p>
-        </address>
-        <ul class="social-icon">
-          <li><h4>WE ARE SOCIAL</h4></li>
-          <li><a href="#" class="fa fa-facebook"></a></li>
-          <li><a href="#" class="fa fa-twitter"></a></li>
-          <li><a href="#" class="fa fa-instagram"></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- end contact -->
+   <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"
+                        style="font-weight: 300; font-size: 30px">
+                        反馈</h2>
+                </div>
+                <article class="htmleaf-container col-md-12">
+                    <div class="result">
+                        <button class="btn btn-danger" id="dic-result">分析错误！</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
 <!-- start copyright -->
 <footer id="copyright">
@@ -354,15 +293,15 @@
       if (Number.parseFloat(req) > 0){
         clearResultDic();
         $('#dic-result').addClass('btn-success');
-        $('#dic-result').text(req);
+        $('#dic-result').text('积极');
       } else if (Number.parseFloat(req) < 0) {
         clearResultDic();
         $('#dic-result').addClass('btn-danger');
-        $('#dic-result').text(req);
+        $('#dic-result').text('消极');
       } else {
         clearResultDic();
         $('#dic-result').addClass('btn-default');
-        $('#dic-result').text(req);
+        $('#dic-result').text('无法识别！');
       }
     });
   }
