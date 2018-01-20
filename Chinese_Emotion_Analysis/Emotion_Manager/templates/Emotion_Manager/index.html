@@ -52,8 +52,18 @@
       align-items: center;
     }
 
-    .result > button {
-      width: 200px;
+    .result > span {
+      font-size: 1.8em;
+    }
+
+    .res-default {  }
+
+    .res-success {
+      color: rgb(253, 107, 39);
+    }
+
+    .res-danger {
+      color: rgb(96, 174, 253);
     }
   </style>
 </head>
@@ -118,7 +128,7 @@
         <select name="dictionaryType" id="dictionary-type" class="dictionary-choose">
           <option selected value="1">知网</option>
           <option value="2">大连理工</option>
-            <option value="3">NTUSD</option>
+          <option value="3">NTUSD</option>
           <option value="4">清华李建军</option>
           <option value="5">清华情感极值词典</option>
 
@@ -142,7 +152,7 @@
                 </div>
                 <article class="htmleaf-container col-md-12">
                     <div class="result">
-                        <button class="btn btn-default" id="dic-result" disabled="disabled">无法识别！</button>
+                        <span id="dic-result" disabled="disabled">无法识别！</span>
                     </div>
                 </article>
             </div>
@@ -159,7 +169,7 @@
                 </div>
                 <article class="htmleaf-container col-md-12">
                     <div class="result">
-                        <button class="btn btn-danger" id="dic-result">分析错误！</button>
+                        <button class="btn btn-danger" onclick="openRecommendModal()">分析错误！</button>
                     </div>
                 </article>
             </div>
@@ -231,7 +241,7 @@
                 </div>
                 <article class="htmleaf-container col-md-12">
                     <div class="result">
-                        <button class="btn btn-danger" id="dic-result">分析错误！</button>
+                        <button class="btn btn-danger" onclick="openRecommendModal()">分析错误！</button>
                     </div>
                 </article>
             </div>
@@ -250,6 +260,26 @@
   </div>
 </footer>
 <!-- end copyright -->
+
+
+<div class="modal fade" id="recommendModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="mySmallModalLabel" style="color: black">反馈</h4>
+        <button type="button" class="close" style="margin-top: -25px" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="color: black;">内容是：感谢你的反馈，我们将因此做出更准确的预测！</p>
+      </div>
+      <div class="modal-footer" style="padding: 7px;">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 
@@ -292,18 +322,25 @@
     $.get('../calculate?type=DIC&dic=' + $('#dictionary-type').val() + '&query=' + $('#emotion-input-0').val()).done(function (req) {
       if (Number.parseFloat(req) > 0){
         clearResultDic();
-        $('#dic-result').addClass('btn-success');
+        $('#dic-result').addClass('res-success');
         $('#dic-result').text('积极');
       } else if (Number.parseFloat(req) < 0) {
         clearResultDic();
-        $('#dic-result').addClass('btn-danger');
+        $('#dic-result').addClass('res-danger');
         $('#dic-result').text('消极');
       } else {
         clearResultDic();
-        $('#dic-result').addClass('btn-default');
+        $('#dic-result').addClass('res-default');
         $('#dic-result').text('无法识别！');
       }
     });
+  }
+
+  /**
+   * Open recommend modal
+   */
+  function openRecommendModal() {
+    $('#recommendModal').modal();
   }
 
 
