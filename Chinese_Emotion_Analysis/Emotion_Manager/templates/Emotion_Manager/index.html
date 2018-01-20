@@ -28,7 +28,7 @@
   <style>
     .dictionary-choose {
       display: inline-block;
-      width: 90px;
+      width: 120px;
       font-size: 0.9em;
       margin-bottom: 10px;
       height: calc(2.25rem + 2px);
@@ -46,7 +46,7 @@
     }
 
     .result {
-      margin-top: 20px;
+      margin-top: 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -109,7 +109,7 @@
           <div class="sub-element">情感极性分为积极、消极、中性。</div>
           <div class="sub-element">情感倾向分析能帮助企业理解用户消费习惯、分析热点话题和危机舆情监控，为企业提供有力的决策支持。</div>
         </div>
-        <a data-scroll href="#service" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">试一试</a>
+        <a data-scroll href="#team" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">试一试</a>
       </div>
     </div>
   </div>
@@ -155,18 +155,6 @@
                         <span id="dic-result" disabled="disabled">无法识别！</span>
                     </div>
                 </article>
-            </div>
-        </div>
-    </section>
-
-   <section id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"
-                        style="font-weight: 300; font-size: 30px">
-                        反馈</h2>
-                </div>
                 <article class="htmleaf-container col-md-12">
                     <div class="result">
                         <button class="btn btn-danger" onclick="openRecommendModal()">分析错误！</button>
@@ -226,27 +214,15 @@
           </div>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-<!-- end portfolio -->
-
-   <section id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"
-                        style="font-weight: 300; font-size: 30px">
-                        反馈</h2>
-                </div>
-                <article class="htmleaf-container col-md-12">
+        <article class="htmleaf-container col-md-12">
                     <div class="result">
                         <button class="btn btn-danger" onclick="openRecommendModal()">分析错误！</button>
                     </div>
                 </article>
-            </div>
-        </div>
-    </section>
+    </div>
+  </div>
+</section>
+<!-- end portfolio -->
 
 <!-- start copyright -->
 <footer id="copyright">
@@ -295,9 +271,9 @@
    * Adjust #dic-result's class
    */
   function clearResultDic() {
-    $('#dic-result').removeClass('btn-default');
-    $('#dic-result').removeClass('btn-danger');
-    $('#dic-result').removeClass('btn-success');
+    $('#dic-result').removeClass('res-success');
+    $('#dic-result').removeClass('res-danger');
+    $('#dic-result').removeClass('res-default');
   }
 
   /**
