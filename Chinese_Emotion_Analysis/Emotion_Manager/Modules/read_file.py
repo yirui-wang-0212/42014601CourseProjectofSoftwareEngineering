@@ -45,9 +45,9 @@ class read_file_part:
 
     ##读取大连理工情感词典
     def _read_dllg_emotion_file(self):
-        path = os.getcwd() + '/Emotion_Manager/Modules'
+        path = os.getcwd()
         # 打开文件
-        bk = xlrd.open_workbook(path + '/res/dic/dalianligong/SenDic.xlsx')
+        bk = xlrd.open_workbook(path+ '/Emotion_Manager/Modules/' + '/res/dic/dalianligong/SenDic.xlsx')
         # 打开工作表
         sh = bk.sheet_by_name("Sheet1")
         # 获取行数
@@ -59,7 +59,7 @@ class read_file_part:
 
 
     def __init__(self):
-        path = os.getcwd() + '/Emotion_Manager/Modules'
+        path = os.getcwd()+'/Emotion_Manager/Modules/'
         self.extreme = self._read_file_(path + '/res/dic/zhiwang/extent_Lv_6.txt')
         self.very = self._read_file_(path + '/res/dic/zhiwang/extent_Lv_4.txt')
         self.more = self._read_file_(path + '/res/dic/zhiwang/extent_Lv_3.txt')
