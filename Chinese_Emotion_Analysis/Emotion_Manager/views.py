@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import re
 import jieba
 from django.http import HttpResponse, HttpResponseRedirect
